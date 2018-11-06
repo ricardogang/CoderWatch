@@ -6,31 +6,131 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
-    <height>334</height>
+    <width>612</width>
+    <height>507</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>2000</width>
+    <height>1500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>256</width>
-      <height>192</height>
-     </rect>
-    </property>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTextEdit" name="textEdit">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEdit_2">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEdit_4">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QWidget" name="">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPlainTextEdit" name="plainTextEdit"/>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QTreeWidget" name="treeWidget">
+              <property name="maximumSize">
+               <size>
+                <width>175</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="textEdit_3">
+              <property name="maximumSize">
+               <size>
+                <width>175</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QPlainTextEdit" name="plainTextEdit_2">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>300</height>
+          </size>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>523</width>
+     <width>612</width>
      <height>19</height>
     </rect>
    </property>
@@ -42,10 +142,32 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionCompile"/>
+   <addaction name="actionRun"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionCompile">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/compile.png</normaloff>:/compile.png</iconset>
+   </property>
+   <property name="text">
+    <string>Compile</string>
+   </property>
+  </action>
+  <action name="actionRun">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/run.png</normaloff>:/run.png</iconset>
+   </property>
+   <property name="text">
+    <string>Run</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

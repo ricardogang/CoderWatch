@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-11-05T01:07:43
+# Project created by QtCreator 2018-11-04T07:06:56
 #
 #-------------------------------------------------
 
@@ -38,3 +38,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    icons.qrc
