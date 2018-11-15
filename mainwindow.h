@@ -11,16 +11,18 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-QProcess *javaProcess;
+    QProcess *javaProcess;
+    QString data;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
     void processStarted();
     void processRead() ;
     void checkError(QProcess::ProcessError err);
     void processExited(int exitCode, QProcess::ExitStatus status);
 
-private slots:
     void on_actionCompile_triggered();
 
     void on_actionRun_triggered();
@@ -29,6 +31,8 @@ private slots:
 
     void on_txtConsole_cursorPositionChanged();
 
+    void consoleChanged(int pos, int removed, int added);
+    bool eventFilter(QObject *watched, QEvent *event);
 private:
     Ui::MainWindow *ui;
 };
