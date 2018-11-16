@@ -27,11 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    highlighter.cpp
+    highlighter.cpp \
+    codeeditor.cpp
 
 HEADERS += \
         mainwindow.h \
-    highlighter.h
+    highlighter.h \
+    codeeditor.h
 
 FORMS += \
         mainwindow.ui

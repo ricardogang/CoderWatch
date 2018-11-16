@@ -6,14 +6,21 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <iostream>
+#include <codeeditor.h>
+#include <QAbstractScrollArea>
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    data="";
     ui->setupUi(this);
+
+    CodeEditor *txtSourceCode= new CodeEditor(ui->widget) ;
+    txtSourceCode->setGeometry(5,5,ui->txtConsole->width(),ui->txtNotes->height()*35);
+
+    data="";
+
     javaProcess= new QProcess() ;
     connect(javaProcess, &QProcess::started, this, &MainWindow::processStarted);
     connect(javaProcess, &QProcess::readyRead, this, &MainWindow::processRead);
@@ -35,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //    QRect screenSize = desktop.availableGeometry(this);
     //    this->setFixedSize(QSize(screenSize.width * 0.7f, screenSize.height * 0.7f));
 
-    Highlighter *highlighter = new Highlighter(ui->txtSourceCode->document());
+    Highlighter *highlighter = new Highlighter(txtSourceCode->document());
     ui->txtConsole->installEventFilter(this);
 }
 
@@ -71,12 +78,12 @@ void MainWindow::on_actionCompile_triggered()
 
         if (file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
             QTextStream stream(&file);
-            stream << ui->txtSourceCode->toPlainText();
+            //stream << txtSourceCode->toPlainText();
             file.flush();
             file.close();
         }
         else {
-            QMessageBox::critical(this, tr("Error"), tr("error"));
+            //QMessageBox::critical(this, tr("Error"), tr("error"));
             return;
         }
     }
