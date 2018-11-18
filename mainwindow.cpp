@@ -16,8 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    CodeEditor *txtSourceCode= new CodeEditor(ui->widget) ;
-    txtSourceCode->setGeometry(5,5,ui->txtConsole->width(),ui->txtNotes->height()*35);
+    CodeEditor *txtSourceCode= new CodeEditor() ;
+    ui->layoutCode->addWidget(txtSourceCode);
+   // txtSourceCode->setGeometry(5,5,ui->txtConsole->width(),ui->txtNotes->height()*35);
+
 
     data="";
 
