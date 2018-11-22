@@ -18,9 +18,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     CodeEditor *txtSourceCode= new CodeEditor() ;
     ui->layoutCode->addWidget(txtSourceCode);
-   // txtSourceCode->setGeometry(5,5,ui->txtConsole->width(),ui->txtNotes->height()*35);
-
-
     data="";
 
     javaProcess= new QProcess() ;

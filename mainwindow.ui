@@ -26,19 +26,19 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">
-         <number>10</number>
+         <number>3</number>
         </property>
         <property name="sizeConstraint">
          <enum>QLayout::SetMinAndMaxSize</enum>
         </property>
         <property name="leftMargin">
-         <number>5</number>
+         <number>3</number>
         </property>
         <property name="topMargin">
          <number>15</number>
         </property>
         <property name="rightMargin">
-         <number>5</number>
+         <number>2</number>
         </property>
         <property name="bottomMargin">
          <number>0</number>
@@ -47,14 +47,14 @@
          <widget class="QTreeWidget" name="treeOutline">
           <property name="minimumSize">
            <size>
-            <width>400</width>
+            <width>200</width>
             <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>400</width>
-            <height>300</height>
+            <width>250</width>
+            <height>250</height>
            </size>
           </property>
           <column>
@@ -75,14 +75,14 @@
          <widget class="QTextEdit" name="txtNotes">
           <property name="minimumSize">
            <size>
-            <width>400</width>
+            <width>200</width>
             <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>400</width>
-            <height>300</height>
+            <width>250</width>
+            <height>250</height>
            </size>
           </property>
           <property name="cursor" stdset="0">
@@ -101,14 +101,14 @@
          <widget class="QTextEdit" name="txtProblem">
           <property name="minimumSize">
            <size>
-            <width>400</width>
+            <width>200</width>
             <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>400</width>
-            <height>300</height>
+            <width>250</width>
+            <height>250</height>
            </size>
           </property>
          </widget>
@@ -186,7 +186,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="layoutCode"/>
+         <layout class="QVBoxLayout" name="layoutCode"/>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -214,7 +214,7 @@
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>300</height>
+            <height>100</height>
            </size>
           </property>
           <property name="palette">
@@ -304,7 +304,7 @@
      <x>0</x>
      <y>0</y>
      <width>933</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
