@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+
     CodeEditor *txtSourceCode= new CodeEditor() ;
     ui->layoutCode->addWidget(txtSourceCode);
     data="";
@@ -35,7 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->move(dw.width()*0.2,dw.height()*0.1);
     ui->btnCompile->setDefaultAction(ui->actionCompile);
     ui->btnRun->setDefaultAction(ui->actionRun);
-
+    txtSourceCode->setMinimumHeight(300);
+//    ui->treeOutline->setFixedWidth();
 
 
     //    QRect screenSize = desktop.availableGeometry(this);
@@ -104,11 +107,11 @@ void MainWindow::on_actionCompile_triggered()
 
 void MainWindow::processRead() {
     javaProcess->waitForStarted() ;
-    ui->txtConsole->appendPlainText(javaProcess->readAll());
+    ui->txtConsole->append(javaProcess->readAll());
 }
 
 void MainWindow::processStarted(){
-    ui->txtConsole->appendPlainText("PROCESS STARTED...\n") ;
+    ui->txtConsole->append("PROCESS STARTED...\n") ;
    // javaProcess->waitForFinished();
 }
 
@@ -117,7 +120,7 @@ void MainWindow::checkError(QProcess::ProcessError err){
 }
 
 void MainWindow::processExited(int exitCode, QProcess::ExitStatus status){
-    ui->txtConsole->appendPlainText("PROCESS ENDED: "+QString(exitCode)+" "+status+"\n") ;
+    ui->txtConsole->append("PROCESS ENDED: "+QString(exitCode)+" "+status+"\n") ;
     try {
         javaProcess->close();
     } catch (...) {
