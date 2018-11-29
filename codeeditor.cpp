@@ -63,25 +63,28 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
 
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
-
+    font.setFamily("Andale Mono") ;
+    font.setPointSize(11);
+    this->setFont(font);
     updateLineNumberAreaWidth(0);
     highlightCurrentLine();
 }
 
 //![constructor]
 
+
 //![extraAreaWidth]
 
 int CodeEditor::lineNumberAreaWidth()
 {
-    int digits = 1;
+    int digits = 3;
     int max = qMax(1, blockCount());
     while (max >= 10) {
         max /= 10;
         ++digits;
     }
 
-    int space = 3 + fontMetrics().horizontalAdvance(QLatin1Char('9')) * digits;
+    int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
 
     return space;
 }

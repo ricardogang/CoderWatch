@@ -17,8 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
-
-    CodeEditor *txtSourceCode= new CodeEditor() ;
+    ui->cmbFontSize->addItems({ "8", "10", "11", "12", "14", "18" });
+    txtSourceCode= new CodeEditor() ;
     ui->layoutCode->addWidget(txtSourceCode);
     data="";
 
@@ -133,10 +133,7 @@ void MainWindow::on_actionRun_triggered()
     javaProcess->start("c.bat", QStringList() << "Clase");
 }
 
-void MainWindow::on_btnSend_clicked()
-{
-    javaProcess->write("@\n\r");
-}
+
 
 void MainWindow::on_txtConsole_cursorPositionChanged()
 {
@@ -160,3 +157,11 @@ void MainWindow::consoleChanged(int pos, int removed, int added){
     //ui->txtConsole->appendPlainText("hey"+c.selectedText());
 }
 
+
+void MainWindow::on_cmbFontSize_currentIndexChanged(const QString &arg1)
+{
+    QFont f("Andale Mono");
+    f.setPointSize(arg1.toInt());
+//    txtSourceCode->setFont(f);
+//    txtSourceCode->document()->setDefaultFont(f);
+}

@@ -70,6 +70,7 @@ class CodeEditor : public QPlainTextEdit
     Q_OBJECT
 
 public:
+    QFont font ;
     CodeEditor(QWidget *parent = nullptr);
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);

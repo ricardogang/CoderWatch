@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QProcess>
+#include <codeeditor.h>
 
 #include <QMainWindow>
 
@@ -13,6 +14,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
     QProcess *javaProcess;
     QString data;
+    CodeEditor *txtSourceCode;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -27,12 +29,13 @@ private slots:
 
     void on_actionRun_triggered();
 
-    void on_btnSend_clicked();
-
     void on_txtConsole_cursorPositionChanged();
 
     void consoleChanged(int pos, int removed, int added);
     bool eventFilter(QObject *watched, QEvent *event);
+
+    void on_cmbFontSize_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 };
