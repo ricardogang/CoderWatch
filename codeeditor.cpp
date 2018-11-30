@@ -63,9 +63,8 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
 
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
-    font.setFamily("Andale Mono") ;
-    font.setPointSize(11);
-    this->setFont(font);
+
+
     updateLineNumberAreaWidth(0);
     highlightCurrentLine();
 }

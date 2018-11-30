@@ -66,7 +66,9 @@ class Highlighter : public QSyntaxHighlighter
 
 public:
     Highlighter(QTextDocument *parent = 0);
-
+    void r(int s, int c, QTextCharFormat f){
+        //setFormat(s,c,f);
+    }
 protected:
     void highlightBlock(const QString &text) override;
 

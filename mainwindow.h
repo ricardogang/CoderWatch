@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include <QProcess>
 #include <codeeditor.h>
+#include <highlighter.h>
 
 #include <QMainWindow>
 
@@ -15,6 +16,7 @@ class MainWindow : public QMainWindow
     QProcess *javaProcess;
     QString data;
     CodeEditor *txtSourceCode;
+    Highlighter *highlighter;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -35,6 +37,8 @@ private slots:
     bool eventFilter(QObject *watched, QEvent *event);
 
     void on_cmbFontSize_currentIndexChanged(const QString &arg1);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

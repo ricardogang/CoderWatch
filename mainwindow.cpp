@@ -16,9 +16,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
     ui->cmbFontSize->addItems({ "8", "10", "11", "12", "14", "18" });
+    ui->cmbFontSize->setCurrentIndex(3);
+    QFont font;
+    font.setFamily("Monospace") ;
+    font.setPointSize(12);
     txtSourceCode= new CodeEditor() ;
+    txtSourceCode->setFont(font);
     ui->layoutCode->addWidget(txtSourceCode);
     data="";
 
@@ -27,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(javaProcess, &QProcess::readyRead, this, &MainWindow::processRead);
 
     connect(javaProcess, &QProcess::errorOccurred, this, &MainWindow::checkError);
-//    connect(javaProcess, &QProcess::finished,this,&MainWindow::processExited);
+    //    connect(javaProcess, &QProcess::finished,this,&MainWindow::processExited);
     connect(javaProcess, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(processExited(int,QProcess::ExitStatus)));
 
     connect( ui->txtConsole->document(), SIGNAL(contentsChange(int,int,int)), this, SLOT(consoleChanged(int,int,int)));
@@ -38,14 +42,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->btnCompile->setDefaultAction(ui->actionCompile);
     ui->btnRun->setDefaultAction(ui->actionRun);
     txtSourceCode->setMinimumHeight(300);
-//    ui->treeOutline->setFixedWidth();
+    //    ui->treeOutline->setFixedWidth();
 
 
     //    QRect screenSize = desktop.availableGeometry(this);
     //    this->setFixedSize(QSize(screenSize.width * 0.7f, screenSize.height * 0.7f));
 
-    Highlighter *highlighter = new Highlighter(txtSourceCode->document());
+    highlighter = new Highlighter(txtSourceCode->document());
     ui->txtConsole->installEventFilter(this);
+
+    //    QFont font2;
+
 }
 
 
@@ -112,7 +119,7 @@ void MainWindow::processRead() {
 
 void MainWindow::processStarted(){
     ui->txtConsole->append("PROCESS STARTED...\n") ;
-   // javaProcess->waitForFinished();
+    // javaProcess->waitForFinished();
 }
 
 void MainWindow::checkError(QProcess::ProcessError err){
@@ -160,8 +167,14 @@ void MainWindow::consoleChanged(int pos, int removed, int added){
 
 void MainWindow::on_cmbFontSize_currentIndexChanged(const QString &arg1)
 {
-    QFont f("Andale Mono");
-    f.setPointSize(arg1.toInt());
-//    txtSourceCode->setFont(f);
-//    txtSourceCode->document()->setDefaultFont(f);
+    QFont font ;
+    font.setFamily("Monospace") ;
+    font.setPointSize(arg1.toInt());
+    if (txtSourceCode) {
+        txtSourceCode->setFont(font);
+    }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
 }
