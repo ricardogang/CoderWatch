@@ -80,6 +80,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionCompile_triggered()
 {
+    ui->progressBar->setValue(0);
+    ui->txtConsole->clear();
     //QString filename = QFileDialog::getSaveFileName(this, tr("Guardar"), "","" );
     QString filename= "Clase.java";
     if (filename != "") {
@@ -99,17 +101,21 @@ void MainWindow::on_actionCompile_triggered()
 
     QProcess compilar;
     compilar.start("javac", QStringList() << filename );
-    if (compilar.waitForFinished()){ // sets current thread to sleep and waits for pingProcess end
+    while(!compilar.waitForFinished(100)){
+        ui->progressBar->setValue(ui->progressBar->value()+11);
+    }
+   // if (compilar.waitForFinished()){ // sets current thread to sleep and waits for pingProcess end
         QString resultado(compilar.readAllStandardError());
         resultado+= compilar.readAllStandardOutput();
         if (resultado.length()==0) {
+            ui->progressBar->setValue(100);
             ui->txtConsole->setPlainText("COMPILATION SUCCESSFULL\n") ;
         } else {
             ui->txtConsole->setPlainText(resultado);
         }
-    } else {
-        ui->txtConsole->setPlainText("ERROR: "+compilar.errorString());
-    }
+    //} else {
+      //  ui->txtConsole->setPlainText("ERROR: "+compilar.errorString());
+    //}
 }
 
 void MainWindow::processRead() {
