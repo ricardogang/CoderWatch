@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>compile.png</file>
         <file>run.png</file>
+        <file>save.png</file>
     </qresource>
 </RCC>

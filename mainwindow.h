@@ -40,6 +40,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_btnCompile_2_triggered(QAction *arg1);
+
 private:
     Ui::MainWindow *ui;
 };

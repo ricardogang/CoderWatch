@@ -178,3 +178,8 @@ void MainWindow::on_cmbFontSize_currentIndexChanged(const QString &arg1)
 void MainWindow::on_pushButton_clicked()
 {
 }
+
+void MainWindow::on_btnCompile_2_triggered(QAction *arg1)
+{
+
+}
