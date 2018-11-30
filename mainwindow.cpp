@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+ui->groupBox->setStyleSheet("{ border: 20px solid gray; border-radius: 3px; } ");
     ui->cmbFontSize->addItems({ "8", "10", "11", "12", "14", "18" });
     ui->cmbFontSize->setCurrentIndex(3);
     QFont font;
@@ -23,7 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
     font.setPointSize(12);
     txtSourceCode= new CodeEditor() ;
     txtSourceCode->setFont(font);
+    txtSourceCode->setFocusPolicy(Qt::StrongFocus);
     ui->layoutCode->addWidget(txtSourceCode);
+    txtSourceCode->setFocus();
     data="";
 
     javaProcess= new QProcess() ;
@@ -54,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //    QFont font2;
 
 }
+
 
 
 bool MainWindow::eventFilter(QObject *watched, QEvent *event){
@@ -116,6 +119,7 @@ void MainWindow::on_actionCompile_triggered()
     //} else {
       //  ui->txtConsole->setPlainText("ERROR: "+compilar.errorString());
     //}
+        ui->txtConsole->setFocus();
 }
 
 void MainWindow::processRead() {
@@ -144,6 +148,7 @@ void MainWindow::on_actionRun_triggered()
 {
     QString classname= "Clase";
     javaProcess->start("c.bat", QStringList() << "Clase");
+    ui->txtConsole->setFocus();
 }
 
 

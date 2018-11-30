@@ -182,6 +182,12 @@
           <verstretch>1</verstretch>
          </sizepolicy>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <widget class="QWidget" name="widget" native="true">
