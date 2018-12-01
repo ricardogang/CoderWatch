@@ -8,14 +8,15 @@
 #include <iostream>
 #include <codeeditor.h>
 #include <QAbstractScrollArea>
+#include <QFileDialog>
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    filename="";
     ui->setupUi(this);
-ui->groupBox->setStyleSheet("{ border: 20px solid gray; border-radius: 3px; } ");
     ui->cmbFontSize->addItems({ "8", "10", "11", "12", "14", "18" });
     ui->cmbFontSize->setCurrentIndex(3);
     QFont font;
@@ -24,6 +25,7 @@ ui->groupBox->setStyleSheet("{ border: 20px solid gray; border-radius: 3px; } ")
     txtSourceCode= new CodeEditor() ;
     txtSourceCode->setFont(font);
     txtSourceCode->setFocusPolicy(Qt::StrongFocus);
+    txtSourceCode->setPlainText("public class Clase {\n\tpublic static void main(String args[]) {\n\t\tSystem.out.println(\"hey\") ;\n\t}\n}");
     ui->layoutCode->addWidget(txtSourceCode);
     txtSourceCode->setFocus();
     data="";
@@ -43,6 +45,7 @@ ui->groupBox->setStyleSheet("{ border: 20px solid gray; border-radius: 3px; } ")
     this->move(dw.width()*0.2,dw.height()*0.1);
     ui->btnCompile->setDefaultAction(ui->actionCompile);
     ui->btnRun->setDefaultAction(ui->actionRun);
+    ui->btnSave->setDefaultAction(ui->actionSave);
     txtSourceCode->setMinimumHeight(300);
     //    ui->treeOutline->setFixedWidth();
 
@@ -85,7 +88,7 @@ void MainWindow::on_actionCompile_triggered()
 {
     ui->progressBar->setValue(0);
     ui->txtConsole->clear();
-    //QString filename = QFileDialog::getSaveFileName(this, tr("Guardar"), "","" );
+
     QString filename= "Clase.java";
     if (filename != "") {
         QFile file(filename);
@@ -129,7 +132,6 @@ void MainWindow::processRead() {
 
 void MainWindow::processStarted(){
     ui->txtConsole->append("PROCESS STARTED...\n") ;
-    // javaProcess->waitForFinished();
 }
 
 void MainWindow::checkError(QProcess::ProcessError err){
@@ -186,11 +188,13 @@ void MainWindow::on_cmbFontSize_currentIndexChanged(const QString &arg1)
     }
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-}
 
-void MainWindow::on_btnCompile_2_triggered(QAction *arg1)
+void MainWindow::on_actionSave_triggered()
 {
 
+    filename = QFileDialog::getSaveFileName(this, tr("Guardar"), "","" );
+
+    QFile file(filename) ;
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text));
+        file.write(txtSourceCode->toPlainText().toStdString().c_str());
 }

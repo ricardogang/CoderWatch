@@ -17,6 +17,7 @@ class MainWindow : public QMainWindow
     QString data;
     CodeEditor *txtSourceCode;
     Highlighter *highlighter;
+    QString filename ;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -38,9 +39,7 @@ private slots:
 
     void on_cmbFontSize_currentIndexChanged(const QString &arg1);
 
-    void on_pushButton_clicked();
-
-    void on_btnCompile_2_triggered(QAction *arg1);
+    void on_actionSave_triggered();
 
 private:
     Ui::MainWindow *ui;
